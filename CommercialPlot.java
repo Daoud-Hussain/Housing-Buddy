@@ -5,9 +5,9 @@ public class CommercialPlot extends Plot implements Taxable{
         //Default Argument Constructor
     }
 
-    public CommercialPlot(String owner, int plotNumber, int size, Address myAddress, int price){
+    public CommercialPlot(String owner, int size, Address myAddress, int price){
         //Argumented Constructor
-        super(owner, plotNumber, size, myAddress);
+        super(owner, size, myAddress);
         if(price > 0){
             this.price = price;
         }

@@ -1,7 +1,6 @@
 public class Plot {
     private String owner;
     private int size;
-    private int plotNumber;
     private Address plotAddress;
 
     public Plot(){
@@ -10,12 +9,9 @@ public class Plot {
     }
 
     //Full-Argument Constructor
-    public Plot(String owner, int plotNumber, int size, Address myAddress){
+    public Plot(String owner, int size, Address myAddress){
         if(owner != ""){
             this.owner = owner;
-        }
-        if(plotNumber > 0){
-            this.plotNumber = plotNumber;
         }
         if(size > 0){
             this.size = size;
@@ -30,11 +26,7 @@ public class Plot {
             this.owner = owner;
         }
     }
-    public void setPlotNumber(int plotNumber){
-        if(plotNumber > 0){
-            this.plotNumber = plotNumber;
-        }
-    }
+
     public void setSize(int size){
         if(size > 0){
             this.size = size;
@@ -47,19 +39,14 @@ public class Plot {
 		return size;
 	}
 
-	public int getPlotNumber(){
-		return plotNumber;
-	}
-
-
 	public String getOwner(){
 		return owner;
 	}
 
 
     public String toString(){
-        String text = "Owner Name: " + owner + "\nPlot Number: " + plotNumber + "\nSize: " + size + "\nCity: "
-        + plotAddress.getCity() + "\nStreet Number: " + plotAddress.getStreet() + "\nHouse: " + plotAddress.getHouse();
+        String text = "Owner Name: " + owner + "\nSize: " + size + "\nCity: "
+        + plotAddress.getCity() + "\nStreet Number: " + plotAddress.getStreet() + "\nHouse: " + plotAddress.getPlot();
         return text;
     }
 

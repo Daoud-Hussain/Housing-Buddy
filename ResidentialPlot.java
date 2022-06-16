@@ -5,9 +5,9 @@ public class ResidentialPlot extends Plot implements Taxable{
         //Default Argument Constructor
     }
 
-    public ResidentialPlot(String owner, int plotNumber, int size, Address myAddress, int price){
+    public ResidentialPlot(String owner, int size, Address myAddress, int price){
         //Argumented Constructor
-        super(owner, plotNumber, size, myAddress);
+        super(owner, size, myAddress);
         if(price > 0){
             this.price = price;
         }
@@ -31,7 +31,7 @@ public class ResidentialPlot extends Plot implements Taxable{
     }
 
     public String toString(){
-        String text = super() + "\nPrice: " + price + "\nTax Amount: " + getTaxAmount();
+        String text = super() + "\nPrice: " + price + "\nTax Amount: " + getTaxAmount() + "\nTotal Price: " + price+getTaxAmount();
         return text;
     }
 }
