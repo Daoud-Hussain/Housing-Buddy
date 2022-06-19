@@ -1,4 +1,6 @@
-public class Plot {
+import java.io.Serializable;
+
+public class Plot implements Serializable{
     protected String owner;
     protected int size;
     protected Address plotAddress;

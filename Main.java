@@ -19,7 +19,7 @@ public class Main{
 			JButton button1 = new JButton("Add a plot");
 			button1.setFocusable(false);
 			button1.addActionListener(e -> new AddAPlot());
-			JButton button2 = new JButton("Assign house");
+			JButton button2 = new JButton("Assign a Plot ");
 			// button2.addActionListener(e -> new SearchByName());
 			button2.setFocusable(false);
 			JButton button3 = new JButton("Check Records");

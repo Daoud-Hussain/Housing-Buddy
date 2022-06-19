@@ -1,3 +1,5 @@
+import java.io.Serializable;
+
 public class CommercialPlot extends Plot implements Taxable{
     private int price;
 

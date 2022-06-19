@@ -10,28 +10,50 @@ import java.util.ArrayList;
 
 public class FileOperation{
 
-    public void writeAFile(Plot s){
+    //Add/Write a residential plot
+    public void addAResidentialPlot(ResidentialPlot rp){
         try {
-            File f = new File("Plot.ser");
+            File f = new File("Residential.ser");
             if(f.exists()){
                 MyObjectOutputStream myObject = new MyObjectOutputStream(new FileOutputStream(f, true));
-                myObject.writeObject(s);
+                myObject.writeObject(rp);
                 myObject.close();
             }else{
                 ObjectOutputStream myObject = new ObjectOutputStream(new FileOutputStream(f));
-                myObject.writeObject(s);
+                myObject.writeObject(rp);
                 myObject.close();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public void readAFile(){
+
+    //Add/Write a commercial plot file
+    public void addACommercialPlot(CommercialPlot cp){
         try {
-            ObjectInputStream redFile = new ObjectInputStream(new FileInputStream("Plot.ser"));
+            File f = new File("Commercial.ser");
+            if(f.exists()){
+                MyObjectOutputStream myObject = new MyObjectOutputStream(new FileOutputStream(f, true));
+                myObject.writeObject(cp);
+                myObject.close();
+            }else{
+                ObjectOutputStream myObject = new ObjectOutputStream(new FileOutputStream(f));
+                myObject.writeObject(cp);
+                myObject.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    //Read/View a residential plot file
+    public void viewAResidentialPlot(){
+        try {
+            ObjectInputStream redFile = new ObjectInputStream(new FileInputStream("Residential.ser"));
             try {
                 while(true){
-                    Plot s = (Plot) redFile.readObject();
+                    ResidentialPlot s = (ResidentialPlot) redFile.readObject();
                     System.out.println(s.toString());
                 }
             }catch (ClassNotFoundException e) {
@@ -47,6 +69,27 @@ public class FileOperation{
         }
     }
 
-    
+    //Read/View a commercial plot file
+    public void viewACommercialPlot(){
+        try {
+            ObjectInputStream redFile = new ObjectInputStream(new FileInputStream("Commercial.ser"));
+            try {
+                while(true){
+                    CommercialPlot s = (CommercialPlot) redFile.readObject();
+                    System.out.println(s.toString());
+                }
+            }catch (ClassNotFoundException e) {
+                System.out.println("Object not found");
+            }catch(EOFException e){
+                System.out.println("End of file");
+            }
+        }catch(FileNotFoundException e){
+            System.out.println("File not found ");
+        }
+        catch(IOException e){
+            System.out.println("some error occured");
+        }
+    }
+
 
 }

@@ -1,11 +1,12 @@
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 
-public class AddAPlot extends JFrame{
+public class AddAPlot extends JFrame implements Serializable{
     AddAPlot(){
 
         String[] responses = {"Residential", "Commercial"};
@@ -17,7 +18,7 @@ public class AddAPlot extends JFrame{
          0);
 
 		String owner = JOptionPane.showInputDialog("Enter the owner name? ");
-		String sizeString = JOptionPane.showInputDialog("Enter the size of plot? ");
+		String sizeString = JOptionPane.showInputDialog("Enter the size of plot in Kanals? ");
         int size = Integer.parseInt(sizeString);
 		String sector = JOptionPane.showInputDialog("Enter the Sector of plot? ");
 		String street = JOptionPane.showInputDialog("Enter the Street of plot?");
@@ -28,21 +29,29 @@ public class AddAPlot extends JFrame{
 
 
 		Address myAddress = new Address(sector, street, plotNumber);
-		// ResidentialPlot plotObj = new ResidentialPlot(owner, size, myAddress, price);
-		// FileOperation myFile = new FileOperation();
-		// myFile.writeAFile(plotObj);
 
 		if(buttonResponse == 0){
 			ResidentialPlot plotObj = new ResidentialPlot(owner, size, myAddress, price);
-			plotObj.toString();
+			FileOperation myFile = new FileOperation();
+			myFile.addAResidentialPlot(plotObj);
+			JOptionPane.showMessageDialog(null, "Congratulations! Residential Plot of size is added successfully",
+			 "Update", JOptionPane.INFORMATION_MESSAGE );
+
+
 		}
-		else{
+		else if(buttonResponse == 1){
 			CommercialPlot plotObj = new CommercialPlot(owner, size, myAddress, price);
-			plotObj.toString();
+			FileOperation myFile = new FileOperation();
+			myFile.addACommercialPlot(plotObj);
+			JOptionPane.showMessageDialog(null, "Congratulations! Commercial Plot of size is added successfully",
+			 "Update", JOptionPane.INFORMATION_MESSAGE );
+
 			
 		}
+		else{
+			System.out.println("Invalid input!!!");
+		}
 
-		JOptionPane.showMessageDialog(null, "Congratulations! Plot is added successfully", "Update", JOptionPane.INFORMATION_MESSAGE );
 
 
 

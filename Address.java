@@ -1,6 +1,6 @@
-// import java.io.Serializable;
+import java.io.Serializable;
 
-public class Address {
+public class Address implements Serializable{
     private String plotNo;
     private String street;
     private String city;
