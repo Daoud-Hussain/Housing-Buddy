@@ -32,7 +32,7 @@ public class SearchByName {
                             JOptionPane.showMessageDialog(null, "Yes! a Commercial plot is present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
                         }
                         else{
-                            JOptionPane.showMessageDialog(null, "Yes! a Commercial plot is present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
+                            JOptionPane.showMessageDialog(null, "No! the Commercial plot is not present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
                         }
                     }
 
@@ -55,7 +55,7 @@ public class SearchByName {
                             JOptionPane.showMessageDialog(null, "Yes! a Residential plot is present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
                         }
                         else{
-                            JOptionPane.showMessageDialog(null, "Yes! a Residential plot is present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
+                            JOptionPane.showMessageDialog(null, "No! the Residential plot is not present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
                         }
                     }
 
