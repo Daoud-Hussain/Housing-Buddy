@@ -26,7 +26,7 @@ public class Main{
 			// button3.addActionListener(e -> new SearchByDepartment());
 			button3.setFocusable(false);
 			JButton button4 = new JButton("Search by Name");
-			// button4.addActionListener(e -> new UpdateByName());
+			button4.addActionListener(e -> new SearchByName());
 			button4.setFocusable(false);
 			JButton button5 = new JButton("Update plot Information");
 			// button5.addActionListener(e -> new DeleteByName());

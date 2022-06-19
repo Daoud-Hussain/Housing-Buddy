@@ -13,28 +13,66 @@ import java.io.ObjectInputStream;
 public class SearchByName {
 	SearchByName() {
         try{
+            String[] responses = {"Residential", "Commercial"};
+            int buttonResponse = JOptionPane.showOptionDialog(null,"Which type of plot you want to search","Confirm the type?",
+            JOptionPane.YES_NO_CANCEL_OPTION,
+            JOptionPane.INFORMATION_MESSAGE,
+            null,
+            responses,
+            0);
+
             String name = JOptionPane.showInputDialog("Enter the name you want to search? ");
             String str = "";
-            ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Student.ser"));
-            try {
-                while(true){
-                    Student s = (Student) obj.readObject();
-                    if(s.getName().equals(name)){
-                        JOptionPane.showMessageDialog(null, "Yes! Student is present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
+            if(buttonResponse == 1){
+                ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Residential.ser"));
+                try {
+                    while(true){
+                        CommercialPlot s = (CommercialPlot) obj.readObject();
+                        if(s.getOwner().equals(name)){
+                            JOptionPane.showMessageDialog(null, "Yes! a Commercial plot is present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "Yes! a Commercial plot is present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
+                        }
                     }
-                    else{
-                        JOptionPane.showMessageDialog(null, "Yes! Student is not present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
-                    }
-                }
-            }catch (ClassNotFoundException e) {
-                System.out.println("Sorry! the targetted class is not Found\n");
-            }catch(EOFException e){
-                obj.close();
-                System.out.println("Sorry! the targetted file has ended\n");
-            }catch(IOException e){
-                System.out.println("Couldn't perform operation due to some error");
-            }
 
+                }catch (ClassNotFoundException e) {
+                    System.out.println("Sorry! the targetted class is not Found\n");
+                }catch(EOFException e){
+                    obj.close();
+                    System.out.println("Reached end of file\n");
+                }catch(IOException e){
+                    System.out.println("Couldn't perform operation due to some error");
+                }
+
+            }   
+            else if(buttonResponse == 0){
+                ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Residential.ser"));
+                try {
+                    while(true){
+                        ResidentialPlot s = (ResidentialPlot) obj.readObject();
+                        if(s.getOwner().equals(name)){
+                            JOptionPane.showMessageDialog(null, "Yes! a Residential plot is present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
+                        }
+                        else{
+                            JOptionPane.showMessageDialog(null, "Yes! a Residential plot is present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
+                        }
+                    }
+
+                }catch (ClassNotFoundException e) {
+                    System.out.println("Sorry! the targetted class is not Found\n");
+                }catch(EOFException e){
+                    obj.close();
+                    System.out.println("Sorry! the targetted file has ended\n");
+                }catch(IOException e){
+                    System.out.println("Couldn't perform operation due to some error");
+                }
+
+            }
+            else{
+                System.out.println("Invalid Input!!!");
+            }
+            
         }
         catch(IOException e){
             System.out.println("Any error");
