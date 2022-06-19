@@ -1,7 +1,7 @@
 public class Plot {
-    private String owner;
-    private int size;
-    private Address plotAddress;
+    protected String owner;
+    protected int size;
+    protected Address plotAddress;
 
     public Plot(){
         //Default Argument Constructor
@@ -46,7 +46,7 @@ public class Plot {
 
     public String toString(){
         String text = "Owner Name: " + owner + "\nSize: " + size + "\nCity: "
-        + plotAddress.getCity() + "\nStreet Number: " + plotAddress.getStreet() + "\nHouse: " + plotAddress.getPlot();
+        + plotAddress.getCity() + "\nStreet Number: " + plotAddress.getStreet() + "\nPlot Number: " + plotAddress.getPlotNo();
         return text;
     }
 

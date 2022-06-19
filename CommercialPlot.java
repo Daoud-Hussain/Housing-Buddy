@@ -32,7 +32,7 @@ public class CommercialPlot extends Plot implements Taxable{
     }
 
     public String toString(){
-        String text = super() + "\nPrice: " + price + "\nTax Amount: " + getTaxAmount();
+        String text = super.toString() + "\nPrice: " + price + "\nTax Amount: " + getTaxAmount() + "\nTotal Price: " + price+getTaxAmount();
         return text;
     }
 }

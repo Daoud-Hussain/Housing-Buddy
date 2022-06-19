@@ -1,51 +1,46 @@
+// import java.io.Serializable;
+
 public class Address {
-    private String country;
+    private String plotNo;
+    private String street;
     private String city;
-    private  String street;
 
     public Address(){
-    //Default Argument Constructor
+        plotNo = "";
+        street = "";
+        city = "";
     }
 
-
-    //Full-Argument Constructor
-    public Address(String street, String city, String country){
-        if(street != ""){
-            this.street = street;
-        }
-        if(city != ""){
-            this.city = city;
-        }
-        if(country != ""){
-            this.country = country;
-        }
+    public Address(String plotNo, String street , String  city){
+        this.plotNo  = plotNo;
+        this. street = street;
+        this.city  = city;
+    }
+    public String getPlotNo() {
+        return plotNo;
     }
 
-    //Setters
-    public void setCountry(String country){
-        if(country != ""){
-            this.country = country;
-        }
+    public void setPlotNo(String plotNo) {
+        this.plotNo = plotNo;
     }
-    public void setCity(String city){
-        if(city != ""){
-            this.city = city;
-        }
-    }
+
     public void setStreet(String street){
-        if(street != ""){
-            this.street = street;
-        }
+        this.street = street;
     }
 
-    //Getters
-    public String getCountry(){
-        return country;
+    public void setCity(String city){
+        this.city = city;
     }
+
+    public String getStreet(){
+        return street;
+    }
+
     public String getCity(){
         return city;
     }
-    public String getStreet(){
-        return street;
+
+    public String toString(){
+        return "\nPlot no is : "+plotNo+"\nStreet no is : "+street+"\nCity is : "+city;
     }
 }
