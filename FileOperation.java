@@ -13,7 +13,7 @@ public class FileOperation{
     //Add/Write a residential plot
     public void addAResidentialPlot(ResidentialPlot rp){
         try {
-            File f = new File("Residential.ser");
+            File f = new File("Residential.txt");
             if(f.exists()){
                 MyObjectOutputStream myObject = new MyObjectOutputStream(new FileOutputStream(f, true));
                 myObject.writeObject(rp);
@@ -31,7 +31,7 @@ public class FileOperation{
     //Add/Write a commercial plot file
     public void addACommercialPlot(CommercialPlot cp){
         try {
-            File f = new File("Commercial.ser");
+            File f = new File("Commercial.txt");
             if(f.exists()){
                 MyObjectOutputStream myObject = new MyObjectOutputStream(new FileOutputStream(f, true));
                 myObject.writeObject(cp);
@@ -50,11 +50,11 @@ public class FileOperation{
     //Read/View a residential plot file
     public void viewAResidentialPlot(){
         try {
-            ObjectInputStream redFile = new ObjectInputStream(new FileInputStream("Residential.ser"));
+            ObjectInputStream redFile = new ObjectInputStream(new FileInputStream("Residential.txt"));
             try {
                 while(true){
                     ResidentialPlot s = (ResidentialPlot) redFile.readObject();
-                    System.out.println(s.toString());
+                    System.out.println("\n\n"+s.toString());
                 }
             }catch (ClassNotFoundException e) {
                 System.out.println("Object not found");
@@ -67,12 +67,13 @@ public class FileOperation{
         catch(IOException e){
             System.out.println("some error occured");
         }
+        System.out.println();
     }
 
     //Read/View a commercial plot file
     public void viewACommercialPlot(){
         try {
-            ObjectInputStream redFile = new ObjectInputStream(new FileInputStream("Commercial.ser"));
+            ObjectInputStream redFile = new ObjectInputStream(new FileInputStream("Commercial.txt"));
             try {
                 while(true){
                     CommercialPlot s = (CommercialPlot) redFile.readObject();
@@ -89,14 +90,15 @@ public class FileOperation{
         catch(IOException e){
             System.out.println("some error occured");
         }
+        System.out.println();
     }
 
 
     public boolean UpdateResidentialPlot(String oldOwner, String newOwner, int price) {
+        ArrayList<ResidentialPlot> list = new ArrayList<ResidentialPlot>();
         boolean flag = false;
         try{
-            ArrayList<ResidentialPlot> list = new ArrayList<ResidentialPlot>();
-            ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Residential.ser"));
+            ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Residential.txt"));
             try {
                 while(true){
                     ResidentialPlot s = (ResidentialPlot) obj.readObject();
@@ -112,51 +114,56 @@ public class FileOperation{
                 System.out.println("Sorry! the targetted file is not found\n");
             }
             catch(EOFException e){
+                System.out.println("End of file Exception");
                 obj.close();
-            }
-            catch(IOException e){
-                System.out.println("Input Output Exception\n");
             }
             catch(ClassNotFoundException e){
                 System.out.println("Sorry! the targetted class is not found\n");
             }
-            
+            catch(IOException e){
+                System.out.println("Input Output Exception\n");
+            }
+
+
             try {
-                File f = new File("Residential.ser");
+                File f = new File("Residential.txt");
                 f.delete();
+                if(f.exists()){
+                    System.out.println("Yes");
+                }else{
+                    System.out.println("NO");
+                }
                 int sizelist = list.size();
                 for(int i = 0; i<sizelist; i++){
                     addAResidentialPlot(list.remove(0));
                 }
             }
+
             catch (Exception e) {
                 System.out.println("Some error occured");
             }
 
-        }
-        catch(IOException e){
+        } catch(IOException e){
             System.out.print("Any error while working!!!");
         }
-
-            if(flag){
-                return true;
-            }
-            else{
-                return false;
-            }
+            return flag;
 
     }
 
-     public void deleteAResidentialPlot(String name){
-
-        try{
+    public void deleteAResidentialPlot(String name){
             ArrayList<ResidentialPlot> list = new ArrayList<ResidentialPlot>();
             boolean flag = false;
-            ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Residential.ser"));
+
+        try{
+            ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Residential.txt"));
             try {
                 while(true){
                     ResidentialPlot s = (ResidentialPlot) obj.readObject();
-                    list.add(s);
+                    if(s.getOwner().equals(name)){
+                        flag = true;
+                    }else{
+                        list.add(s);
+                    }
                 }
             }
             catch(SecurityException e){
@@ -177,32 +184,36 @@ public class FileOperation{
             }
 
             try {
-                File f = new File("Residential.ser");
+                File f = new File("Residential.txt");
                 f.delete();
-                for(int i = 0; i<list.size(); i++){
-                    if(name.equals(list.get(i).getOwner())){
-                        list.remove(i);
+                if(f.exists()){
+                    System.out.println("is");
+                }
+                int sizelist = list.size();
+                for(int i = 0; i<sizelist; i++){
+                    // if(name.equals(list.get(i).getOwner())){
+                    //     list.remove(i);
                         // System.out.println("iNside loop if");
-                    }else{
-                        addAResidentialPlot(list.remove(i));
-                    }
+                    // }else{
+                        addAResidentialPlot(list.remove(0));
+                    // }
                 }
             }catch(SecurityException e){
                 System.out.println("Security");
             }catch (Exception e) {
                 System.out.println("Some error occured");
             }
-            if(flag){
+        }
+        catch(IOException e){
+            System.out.print("Any random error occured");
+        }
+        if(flag){
                System.out.print("Removed successfully!");
                 
             }
             else{
                 System.out.print("Couldn't remove successfully!");
             }
-        }
-        catch(IOException e){
-            System.out.print("Any random error occured");
-        }
     }
 
 

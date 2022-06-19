@@ -24,7 +24,7 @@ public class SearchByName {
             String name = JOptionPane.showInputDialog("Enter the name you want to search? ");
             String str = "";
             if(buttonResponse == 1){
-                ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Residential.ser"));
+                ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Commercial.txt"));
                 try {
                     while(true){
                         CommercialPlot s = (CommercialPlot) obj.readObject();
@@ -47,16 +47,18 @@ public class SearchByName {
 
             }   
             else if(buttonResponse == 0){
-                ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Residential.ser"));
+                boolean flag = false;
+                ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Residential.txt"));
                 try {
                     while(true){
                         ResidentialPlot s = (ResidentialPlot) obj.readObject();
                         if(s.getOwner().equals(name)){
-                            JOptionPane.showMessageDialog(null, "Yes! a Residential plot is present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
+                            flag = true;
+                            // JOptionPane.showMessageDialog(null, "Yes! a Residential plot is present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
                         }
-                        else{
-                            JOptionPane.showMessageDialog(null, "No! the Residential plot is not present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
-                        }
+                        // else{
+                            // JOptionPane.showMessageDialog(null, "No! the Residential plot is not present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
+                        // }
                     }
 
                 }catch (ClassNotFoundException e) {
@@ -66,6 +68,13 @@ public class SearchByName {
                     System.out.println("Sorry! the targetted file has ended\n");
                 }catch(IOException e){
                     System.out.println("Couldn't perform operation due to some error");
+                }
+
+                
+                if(flag){
+                    JOptionPane.showMessageDialog(null, "Yes! a Residential plot is present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
+                }else {
+                    JOptionPane.showMessageDialog(null, "No! the Residential plot is not present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
                 }
 
             }

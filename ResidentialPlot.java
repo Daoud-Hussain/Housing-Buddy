@@ -1,4 +1,6 @@
-public class ResidentialPlot extends Plot implements Taxable{
+import java.io.Serializable;
+
+public class ResidentialPlot extends Plot implements Taxable,Serializable{
     private int price;
 
     public ResidentialPlot(){
@@ -33,7 +35,7 @@ public class ResidentialPlot extends Plot implements Taxable{
 
 
     public String toString(){
-        String text = super.toString() + "\nPrice: " + price + "\nTax Amount: " + getTaxAmount() + "\nTotal Price: " + price+getTaxAmount();
+        String text = super.toString() + "\nPrice: " + price + "\nTax Amount: " + getTaxAmount() ;
         return text;
     }
 }

@@ -22,6 +22,8 @@ public class DeleteRecordByOwner{
         if(buttonResponse == 0){
    			FileOperation f= new FileOperation();
 			f.deleteAResidentialPlot(ownerName);
+			JOptionPane.showMessageDialog(null, "Deleted plot information Successfully!!", "Update", JOptionPane.INFORMATION_MESSAGE );
+
         }
         else if(buttonResponse == 1){
           	FileOperation f= new FileOperation();
