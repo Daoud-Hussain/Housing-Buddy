@@ -1,6 +1,6 @@
 import java.io.Serializable;
 
-public class CommercialPlot extends Plot implements Taxable, Serializable{
+public class CommercialPlot extends Plot implements Taxable{
     private int price;
 
     public CommercialPlot(){
@@ -34,7 +34,7 @@ public class CommercialPlot extends Plot implements Taxable, Serializable{
     }
 
     public String toString(){
-        String text = super.toString() + "\nPrice: " + price + "\nTax Amount: " + getTaxAmount() ;
+        String text = super.toString() + "\nPrice: " + price + "\nTax Amount: " + getTaxAmount() + "\nTotal Price: " + price+getTaxAmount();
         return text;
     }
 }

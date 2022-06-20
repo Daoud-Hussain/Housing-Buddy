@@ -1,44 +1,53 @@
-public class Person {
-    private String name;
-    private String fatherName;
-    private int age;
-    private Address userAddress;
+import java.io.Serializable;
+
+public class Person implements Serializable{
+	private String name;
+	private Address address;
+	private String phoneNo;
+	private String email;
 
     public Person(){
-        //Default Argument Constructor
-        Address myAddress = new Address();
+        address = new Address();
     }
+	public Person(String name, Address address, String phoneNo, String email){
+		this.name = name;
+		this.address = address;
+		this.phoneNo = phoneNo;
+		this.email = email;
+	}
 
-    //Full-Argument Constructor
-    public Person(String name, String fatherName, int age, Address userAddress){
-        if(name != ""){
-            this.name = name;
-        }
-        if(fatherName != ""){
-            this.fatherName = fatherName;
-        }
-        if(age > 0){
-            this.age = age;
-        }
-        this.userAddress = userAddress;
+	public void setName(String name){
+		this.name = name;
+	}
+	public void setAddress(Address address){
+		this.address = address;
+	}
+	
+	public void setPhoneNO(String phoneNo){
+		this.phoneNo = phoneNo;
+	}
+
+	public void setEmail(String email){
+		this.email= email;
+	}
+
+	public String getName(){
+		return name;
+	}
+
+	public Address getAddress(){
+		return address;
+	}
+
+	public String getPhoneNo(){
+		return phoneNo;
+	}
+
+	public String getEmail(){
+		return email;
+	}
+
+    public String toString(){
+        return "\nFull name : "+name+"\nAddress : "+address.toString()+"\nPhone no : "+phoneNo+"\nEmail : "+email;
     }
-
-
-    //Setters
-    public void setName(String name){
-        if(name != ""){
-            this.name = name;
-        }
-    }
-    public void setFatherName(String fatherName){
-        if(fatherName != ""){
-            this.fatherName = fatherName;
-        }
-    }
-
-
-
-
-
-
 }

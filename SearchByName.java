@@ -22,20 +22,18 @@ public class SearchByName {
             0);
 
             String name = JOptionPane.showInputDialog("Enter the name you want to search? ");
-            String str = "";
+            // String str = "";
             if(buttonResponse == 1){
-                ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Commercial.txt"));
+                ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Residential.ser"));
+                boolean flag = false;
                 try {
                     while(true){
                         CommercialPlot s = (CommercialPlot) obj.readObject();
                         if(s.getOwner().equals(name)){
-                            JOptionPane.showMessageDialog(null, "Yes! a Commercial plot is present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
-                        }
-                        else{
-                            JOptionPane.showMessageDialog(null, "No! the Commercial plot is not present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
+                            flag = true;
                         }
                     }
-
+                    
                 }catch (ClassNotFoundException e) {
                     System.out.println("Sorry! the targetted class is not Found\n");
                 }catch(EOFException e){
@@ -44,39 +42,36 @@ public class SearchByName {
                 }catch(IOException e){
                     System.out.println("Couldn't perform operation due to some error");
                 }
-
+                if(flag){
+                    JOptionPane.showMessageDialog(null, "Yes! a Commercial plot is present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
+                }else{
+                    JOptionPane.showMessageDialog(null, "No! the Commercial plot is not present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
+                }
             }   
             else if(buttonResponse == 0){
+                ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Residential.ser"));
                 boolean flag = false;
-                ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Residential.txt"));
                 try {
                     while(true){
                         ResidentialPlot s = (ResidentialPlot) obj.readObject();
                         if(s.getOwner().equals(name)){
                             flag = true;
-                            // JOptionPane.showMessageDialog(null, "Yes! a Residential plot is present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
                         }
-                        // else{
-                            // JOptionPane.showMessageDialog(null, "No! the Residential plot is not present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
-                        // }
                     }
-
-                }catch (ClassNotFoundException e) {
-                    System.out.println("Sorry! the targetted class is not Found\n");
-                }catch(EOFException e){
-                    obj.close();
+                    }catch (ClassNotFoundException e) {
+                        System.out.println("Sorry! the targetted class is not Found\n");
+                    }catch(EOFException e){
+                        obj.close();
                     System.out.println("Sorry! the targetted file has ended\n");
                 }catch(IOException e){
                     System.out.println("Couldn't perform operation due to some error");
                 }
-
-                
                 if(flag){
                     JOptionPane.showMessageDialog(null, "Yes! a Residential plot is present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
-                }else {
+                }
+                else{
                     JOptionPane.showMessageDialog(null, "No! the Residential plot is not present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
                 }
-
             }
             else{
                 System.out.println("Invalid Input!!!");

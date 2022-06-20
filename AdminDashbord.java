@@ -12,7 +12,7 @@ public class AdminDashbord extends JFrame{
     AdminDashbord(){
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(500,500);
-        setLayout(new GridLayout(25,2));
+        setLayout(new GridLayout(25,20));
         setTitle("Admin dashboard");
         l1 = new JLabel("Admin dashboard");
         b1 = new JButton("Delete record by email");

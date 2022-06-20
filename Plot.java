@@ -7,7 +7,7 @@ public class Plot implements Serializable{
 
     public Plot(){
         //Default Argument Constructor
-        Address myAddress = new Address();
+        plotAddress = new Address();
     }
 
     //Full-Argument Constructor

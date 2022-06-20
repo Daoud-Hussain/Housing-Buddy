@@ -15,7 +15,7 @@ public class FileOperation{
         try {
             File f = new File("Residential.txt");
             if(f.exists()){
-                MyObjectOutputStream myObject = new MyObjectOutputStream(new FileOutputStream(f, true));
+                myObjectOutputStream myObject = new myObjectOutputStream(new FileOutputStream(f, true));
                 myObject.writeObject(rp);
                 myObject.close();
             }else{
@@ -33,7 +33,7 @@ public class FileOperation{
         try {
             File f = new File("Commercial.txt");
             if(f.exists()){
-                MyObjectOutputStream myObject = new MyObjectOutputStream(new FileOutputStream(f, true));
+                myObjectOutputStream myObject = new myObjectOutputStream(new FileOutputStream(f, true));
                 myObject.writeObject(cp);
                 myObject.close();
             }else{
@@ -59,6 +59,7 @@ public class FileOperation{
             }catch (ClassNotFoundException e) {
                 System.out.println("Object not found");
             }catch(EOFException e){
+                redFile.close();
                 System.out.println("End of file");
             }
         }catch(FileNotFoundException e){
@@ -67,7 +68,6 @@ public class FileOperation{
         catch(IOException e){
             System.out.println("some error occured");
         }
-        System.out.println();
     }
 
     //Read/View a commercial plot file
@@ -82,21 +82,21 @@ public class FileOperation{
             }catch (ClassNotFoundException e) {
                 System.out.println("Object not found");
             }catch(EOFException e){
+                redFile.close();
                 System.out.println("End of file");
             }
         }catch(FileNotFoundException e){
             System.out.println("File not found ");
         }
         catch(IOException e){
-            System.out.println("some error occured");
+            System.out.println("Input Output Exception");
         }
-        System.out.println();
     }
 
 
     public boolean UpdateResidentialPlot(String oldOwner, String newOwner, int price) {
-        ArrayList<ResidentialPlot> list = new ArrayList<ResidentialPlot>();
         boolean flag = false;
+        ArrayList<ResidentialPlot> list = new ArrayList<ResidentialPlot>();
         try{
             ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Residential.txt"));
             try {
@@ -114,46 +114,48 @@ public class FileOperation{
                 System.out.println("Sorry! the targetted file is not found\n");
             }
             catch(EOFException e){
-                System.out.println("End of file Exception");
                 obj.close();
-            }
-            catch(ClassNotFoundException e){
-                System.out.println("Sorry! the targetted class is not found\n");
             }
             catch(IOException e){
                 System.out.println("Input Output Exception\n");
             }
-
-
+            catch(ClassNotFoundException e){
+                System.out.println("Sorry! the targetted class is not found\n");
+            }
+            
             try {
                 File f = new File("Residential.txt");
                 f.delete();
+                
                 if(f.exists()){
-                    System.out.println("Yes");
+                    System.out.println("Is Yes");
                 }else{
-                    System.out.println("NO");
+                    System.out.println("am NO");
                 }
+                // if(f.exists()){
+                //     System.out.println("is");
+                // }
                 int sizelist = list.size();
                 for(int i = 0; i<sizelist; i++){
                     addAResidentialPlot(list.remove(0));
                 }
             }
-
             catch (Exception e) {
                 System.out.println("Some error occured");
             }
 
-        } catch(IOException e){
+        }
+        catch(IOException e){
             System.out.print("Any error while working!!!");
         }
-            return flag;
+        return flag;
 
     }
 
-    public void deleteAResidentialPlot(String name){
-            ArrayList<ResidentialPlot> list = new ArrayList<ResidentialPlot>();
-            boolean flag = false;
+     public void deleteAResidentialPlot(String name){
 
+         ArrayList<ResidentialPlot> list = new ArrayList<ResidentialPlot>();
+         boolean flag = false;
         try{
             ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Residential.txt"));
             try {
@@ -186,35 +188,23 @@ public class FileOperation{
             try {
                 File f = new File("Residential.txt");
                 f.delete();
-                if(f.exists()){
-                    System.out.println("is");
-                }
-                int sizelist = list.size();
-                for(int i = 0; i<sizelist; i++){
-                    // if(name.equals(list.get(i).getOwner())){
-                    //     list.remove(i);
-                        // System.out.println("iNside loop if");
-                    // }else{
-                        addAResidentialPlot(list.remove(0));
-                    // }
+                int sizeList = list.size();
+                for(int i = 0; i<sizeList; i++){
+                    addAResidentialPlot(list.remove(0));
                 }
             }catch(SecurityException e){
                 System.out.println("Security");
             }catch (Exception e) {
                 System.out.println("Some error occured");
             }
+            if(flag){
+                System.out.println("Removed successfully ");
+            }else{
+                System.out.println("Cannot remove!");
+            }
         }
         catch(IOException e){
             System.out.print("Any random error occured");
         }
-        if(flag){
-               System.out.print("Removed successfully!");
-                
-            }
-            else{
-                System.out.print("Couldn't remove successfully!");
-            }
     }
-
-
 }

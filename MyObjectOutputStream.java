@@ -1,14 +1,18 @@
-
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 
-public class MyObjectOutputStream extends ObjectOutputStream{
-    public MyObjectOutputStream() throws IOException{
+public class myObjectOutputStream extends ObjectOutputStream {
+    public myObjectOutputStream() throws IOException{
         super();
     }
-    public MyObjectOutputStream(OutputStream o) throws IOException{
+
+    public myObjectOutputStream(OutputStream o) throws IOException{
         super(o);
     }
-    public void writeStreamHeader(){}
+
+    public void writeStreamHeader(){
+
+    }
+    
 }
