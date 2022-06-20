@@ -57,16 +57,16 @@ public class FileOperation{
                     System.out.println("\n\n"+s.toString());
                 }
             }catch (ClassNotFoundException e) {
-                System.out.println("Object not found");
+                System.out.println("Targetted class not found!!");
             }catch(EOFException e){
                 redFile.close();
-                System.out.println("End of file");
+                System.out.println("Reached End of file!!");
             }
         }catch(FileNotFoundException e){
-            System.out.println("File not found ");
+            System.out.println("No Such Record found!! ");
         }
         catch(IOException e){
-            System.out.println("some error occured");
+            System.out.println("Any Input/Output Exception occured!!");
         }
     }
 
@@ -80,13 +80,13 @@ public class FileOperation{
                     System.out.println(s.toString());
                 }
             }catch (ClassNotFoundException e) {
-                System.out.println("Object not found");
+                System.out.println("Targetted class not found!!");
             }catch(EOFException e){
                 redFile.close();
                 System.out.println("End of file");
             }
         }catch(FileNotFoundException e){
-            System.out.println("File not found ");
+            System.out.println("No such record exists!! ");
         }
         catch(IOException e){
             System.out.println("Input Output Exception");
@@ -111,7 +111,7 @@ public class FileOperation{
                 }
             }
             catch(FileNotFoundException e){
-                System.out.println("Sorry! the targetted file is not found\n");
+                System.out.println("The targetted file is not found!!\n");
             }
             catch(EOFException e){
                 obj.close();
@@ -128,13 +128,11 @@ public class FileOperation{
                 f.delete();
                 
                 if(f.exists()){
-                    System.out.println("Is Yes");
+                    System.out.println("File");
                 }else{
-                    System.out.println("am NO");
+                    System.out.println("File didn't found");
                 }
-                // if(f.exists()){
-                //     System.out.println("is");
-                // }
+
                 int sizelist = list.size();
                 for(int i = 0; i<sizelist; i++){
                     addAResidentialPlot(list.remove(0));
@@ -169,7 +167,7 @@ public class FileOperation{
                 }
             }
             catch(SecurityException e){
-                System.out.println("Security");
+                System.out.println("Security Exception");
             }
             catch(FileNotFoundException e){
                 System.out.println("File not found");
@@ -198,9 +196,9 @@ public class FileOperation{
                 System.out.println("Some error occured");
             }
             if(flag){
-                System.out.println("Removed successfully ");
+                System.out.println("Removed record successfully ");
             }else{
-                System.out.println("Cannot remove!");
+                System.out.println("Couldn't remove the record!");
             }
         }
         catch(IOException e){

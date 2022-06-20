@@ -16,9 +16,6 @@ public class Address implements Serializable{
         this. street = street;
         this.sector  = sector;
     }
-    public String getPlotNo() {
-        return plotNo;
-    }
 
     public void setPlotNo(String plotNo) {
         this.plotNo = plotNo;
@@ -38,6 +35,11 @@ public class Address implements Serializable{
 
     public String getSector(){
         return sector;
+    }
+
+    
+    public String getPlotNo() {
+        return plotNo;
     }
 
     public String toString(){

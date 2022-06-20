@@ -28,7 +28,7 @@ public class AddAPlot extends JFrame implements Serializable{
 
 
 
-		Address myAddress = new Address(sector, street, plotNumber);
+		Address myAddress = new Address(plotNumber, street, sector);
 
 		if(buttonResponse == 0){
 			ResidentialPlot plotObj = new ResidentialPlot(owner, size, myAddress, price);

@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 
 public class SearchByName {
-	SearchByName() {
+    SearchByName() {
         try{
             String[] responses = {"Residential", "Commercial"};
             int buttonResponse = JOptionPane.showOptionDialog(null,"Which type of plot you want to search","Confirm the type?",
@@ -22,66 +22,67 @@ public class SearchByName {
             0);
 
             String name = JOptionPane.showInputDialog("Enter the name you want to search? ");
-            // String str = "";
-            if(buttonResponse == 1){
+            if(buttonResponse == 0){
+                boolean flag = false;
                 ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Residential.txt"));
-                boolean flag = false;
-                try {
-                    while(true){
-                        CommercialPlot s = (CommercialPlot) obj.readObject();
-                        if(s.getOwner().equals(name)){
-                            flag = true;
-                        }
-                    }
-                    
-                }catch (ClassNotFoundException e) {
-                    System.out.println("Sorry! the targetted class is not Found\n");
-                }catch(EOFException e){
-                    obj.close();
-                    System.out.println("Reached end of file\n");
-                }catch(IOException e){
-                    System.out.println("Couldn't perform operation due to some error");
-                }
-                if(flag){
-                    JOptionPane.showMessageDialog(null, "Yes! a Commercial plot is present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
-                }else{
-                    JOptionPane.showMessageDialog(null, "No! the Commercial plot is not present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
-                }
-            }   
-            else if(buttonResponse == 0){
-                ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Commercial.txt"));
-                boolean flag = false;
                 try {
                     while(true){
                         ResidentialPlot s = (ResidentialPlot) obj.readObject();
-                        if(s.getOwner().equals(name)){
+                        if(s.getOwner().equalsIgnoreCase(name)){
                             flag = true;
                         }
+                        
                     }
-                    }catch (ClassNotFoundException e) {
-                        System.out.println("Sorry! the targetted class is not Found\n");
-                    }catch(EOFException e){
-                        obj.close();
-                    System.out.println("Sorry! the targetted file has ended\n");
+                }catch (ClassNotFoundException e) {
+                    System.out.println("The targetted class is not Found\n");
+                }catch(EOFException e){
+                    obj.close();
+                    System.out.println("The targetted file has ended\n");
                 }catch(IOException e){
                     System.out.println("Couldn't perform operation due to some error");
                 }
+
+
                 if(flag){
-                    JOptionPane.showMessageDialog(null, "Yes! a Residential plot is present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
+                    JOptionPane.showMessageDialog(null, "Yes! Residential plot of " + name+ " is registered!!", "Update", JOptionPane.INFORMATION_MESSAGE );
                 }
                 else{
-                    JOptionPane.showMessageDialog(null, "No! the Residential plot is not present!!", "Update", JOptionPane.INFORMATION_MESSAGE );
+                    JOptionPane.showMessageDialog(null, "No! Residential plot of " + name+ " is not registered!!", "Update", JOptionPane.INFORMATION_MESSAGE );
                 }
             }
-            else{
-                System.out.println("Invalid Input!!!");
+            else if(buttonResponse == 1){
+                boolean flag = false;
+                ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Commercial.txt"));
+                try {
+                    while(true){
+                        CommercialPlot s = (CommercialPlot) obj.readObject();
+                        if(s.getOwner().equalsIgnoreCase(name)){
+                            flag = true;
+                        }
+                        
+                    }
+                }catch (ClassNotFoundException e) {
+                    System.out.println("The targetted class is not Found\n");
+                }catch(EOFException e){
+                    obj.close();
+                    System.out.println("The targetted file has ended\n");
+                }catch(IOException e){
+                    System.out.println("Couldn't perform operation due to some error");
+                }
+
+
+                if(flag){
+                    JOptionPane.showMessageDialog(null, "Yes! Commercial plot of " + name+ " is registered!!", "Update", JOptionPane.INFORMATION_MESSAGE );
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "No! Commercial plot of " + name+ " is not registered!!", "Update", JOptionPane.INFORMATION_MESSAGE );
+                }
             }
-            
         }
         catch(IOException e){
             System.out.println("Any error");
         }
-		
-	}
+        
+    }
 
 }
