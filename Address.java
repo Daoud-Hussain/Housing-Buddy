@@ -3,18 +3,18 @@ import java.io.Serializable;
 public class Address implements Serializable{
     private String plotNo;
     private String street;
-    private String city;
+    private String sector;
 
     public Address(){
         plotNo = "";
         street = "";
-        city = "";
+        sector = "";
     }
 
-    public Address(String plotNo, String street , String  city){
+    public Address(String plotNo, String street , String  sector){
         this.plotNo  = plotNo;
         this. street = street;
-        this.city  = city;
+        this.sector  = sector;
     }
     public String getPlotNo() {
         return plotNo;
@@ -28,19 +28,19 @@ public class Address implements Serializable{
         this.street = street;
     }
 
-    public void setCity(String city){
-        this.city = city;
+    public void setSector(String sector){
+        this.sector = sector;
     }
 
     public String getStreet(){
         return street;
     }
 
-    public String getCity(){
-        return city;
+    public String getSector(){
+        return sector;
     }
 
     public String toString(){
-        return "\nPlot no is : "+plotNo+"\nStreet no is : "+street+"\nCity is : "+city;
+        return "\nPlot no is : "+plotNo+"\nStreet no is : "+street+"\nsector is : "+sector;
     }
 }

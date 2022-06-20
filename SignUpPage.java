@@ -9,7 +9,9 @@ public class SignUpPage extends JFrame{
     public SignUpPage(){
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(600,600);
-        setTitle("Admin registration");
+        setTitle("Housing Society Management System");
+        ImageIcon image = new ImageIcon("Images/logo.jpg");
+        setIconImage(image.getImage());
         setLayout(new GridLayout(9,2));
         l1 = new JLabel("Name");
         l2 = new JLabel("Plot no");

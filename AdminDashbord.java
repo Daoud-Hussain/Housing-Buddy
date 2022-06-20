@@ -2,6 +2,8 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.ImageIcon;
+
 
 
 public class AdminDashbord extends JFrame{
@@ -13,7 +15,10 @@ public class AdminDashbord extends JFrame{
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(500,500);
         setLayout(new GridLayout(25,20));
-        setTitle("Admin dashboard");
+        setTitle("Housing Society Management System");
+        ImageIcon image = new ImageIcon("Images/logo.jpg");
+        setIconImage(image.getImage());
+
         l1 = new JLabel("Admin dashboard");
         b1 = new JButton("Delete record by email");
         b2 = new JButton("Search record by email");

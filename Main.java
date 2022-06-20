@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 public class Main{
 	
-	public static void main(String[] args) {
+	Main() {
 
 			JFrame frame = new JFrame();
 			frame.setSize(500,400);
@@ -17,8 +17,6 @@ public class Main{
 			JButton button1 = new JButton("Add a plot");
 			button1.setFocusable(false);
 			button1.addActionListener(e -> new AddAPlot());
-			JButton button2 = new JButton("Assign a Plot ");
-			button2.setFocusable(false);
 			JButton button3 = new JButton("Check Records");
 			button3.addActionListener(e -> new ViewRecord());
 			button3.setFocusable(false);
@@ -31,12 +29,15 @@ public class Main{
 			JButton button6 = new JButton("Delete a member from record");
 			button6.addActionListener(e -> new DeleteRecordByOwner());
 			button6.setFocusable(false);
+			JButton button7 = new JButton("Exit");
+			button7.addActionListener(e -> System.exit(0));
+			button7.setFocusable(false);
 			frame.add(button1);
-			frame.add(button2);
 			frame.add(button3);
 			frame.add(button4);
 			frame.add(button5);
 			frame.add(button6);
+			frame.add(button7);
 
 
 			frame.setVisible(true);

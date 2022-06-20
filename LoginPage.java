@@ -11,14 +11,16 @@ public class LoginPage implements ActionListener {
     JTextField userIdField = new JTextField();
     JPasswordField userPasswordField = new JPasswordField();
     JLabel headerLabel = new JLabel("Log In...");
-    JLabel userIdLabel = new JLabel("User ID");
+    JLabel userIdLabel = new JLabel("User Email");
     JLabel userPasswordLabel = new JLabel("Password");
     JLabel messageLabel = new JLabel();
 
 
     LoginPage(){
 
-        frame.setTitle("Login Page");
+        frame.setTitle("Housing Society Management System");
+        ImageIcon image = new ImageIcon("Images/logo.jpg");
+        frame.setIconImage(image.getImage());
 
         headerLabel.setBounds(150,20,400,50);
         headerLabel.setFont(new Font(null, Font.BOLD, 40));
@@ -66,7 +68,7 @@ public class LoginPage implements ActionListener {
         if (e.getSource() == signUpButton){
                     
             String[] responses = {"Admin", "Member"};
-            int buttonResponse = JOptionPane.showOptionDialog(null,"Which type of plot you want to add","Confirm the type?",
+            int buttonResponse = JOptionPane.showOptionDialog(null,"Which type of account you want to register","Confirm the type?",
             JOptionPane.YES_NO_CANCEL_OPTION,
             JOptionPane.INFORMATION_MESSAGE,
             null,
@@ -99,7 +101,7 @@ public class LoginPage implements ActionListener {
                     if(f.isAdmin(UserID, password)){
                         new AdminDashbord();
                     }else{
-                        new MemberScreen();
+                        new Main();
                     }
                 }else {
                     messageLabel.setForeground(Color.red);

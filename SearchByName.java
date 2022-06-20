@@ -24,7 +24,7 @@ public class SearchByName {
             String name = JOptionPane.showInputDialog("Enter the name you want to search? ");
             // String str = "";
             if(buttonResponse == 1){
-                ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Residential.ser"));
+                ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Residential.txt"));
                 boolean flag = false;
                 try {
                     while(true){
@@ -49,7 +49,7 @@ public class SearchByName {
                 }
             }   
             else if(buttonResponse == 0){
-                ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Residential.ser"));
+                ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Commercial.txt"));
                 boolean flag = false;
                 try {
                     while(true){

@@ -47,8 +47,8 @@ public class Plot implements Serializable{
 
 
     public String toString(){
-        String text = "Owner Name: " + owner + "\nSize: " + size + "\nCity: "
-        + plotAddress.getCity() + "\nStreet Number: " + plotAddress.getStreet() + "\nPlot Number: " + plotAddress.getPlotNo();
+        String text = "Owner Name: " + owner + "\nSize: " + size + "\nSector: "
+        + plotAddress.getSector() + "\nStreet Number: " + plotAddress.getStreet() + "\nPlot Number: " + plotAddress.getPlotNo();
         return text;
     }
 
