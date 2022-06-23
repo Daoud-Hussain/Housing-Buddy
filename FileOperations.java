@@ -166,7 +166,7 @@ public class FileOperations{
                 System.out.println("Object not found");
             }catch(EOFException e){
                 redFile.close();
-                System.out.println("End of file");
+                System.out.println("End of file Simple validate");
             }
         }catch(FileNotFoundException e){
             System.out.println("File not found ");
@@ -200,7 +200,7 @@ public class FileOperations{
                 System.out.println("Object not found");
             }catch(EOFException e){
                 redFile.close();
-                System.out.println("End of file");
+                System.out.println("End of file Admin");
             }
         }catch(FileNotFoundException e){
             System.out.println("File not found ");

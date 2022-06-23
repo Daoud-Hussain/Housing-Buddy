@@ -4,24 +4,28 @@ import java.awt.event.*;
 
 
 public class MemberScreen extends JFrame{
-    JLabel l1;
     JButton b1, b2, b3, b4;
     MemberScreen(){
-        l1 = new JLabel("Member Screen");
-        setLayout(new GridLayout(4,1));
+        setLayout(new GridLayout(2,1));
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(400,400);
-        add(l1);
+        ImageIcon image = new ImageIcon("Images/logo.jpg");
+        setIconImage(image.getImage());
+
+        setSize(360,200);
+        setTitle("Member Dashboard");
         b1 = new JButton("Search plots by owner name");
         b4 = new JButton("Logout");
 
 
         MyActionListener a = new MyActionListener();
         b1.addActionListener(a);
+        b1.setFocusable(false);
         b4.addActionListener(a);
+        b4.setFocusable(false);
+
 
         add(b1);
-        add(b2);
+        add(b4);
 
         setVisible(true);
     }
@@ -35,7 +39,6 @@ public class MemberScreen extends JFrame{
         public void actionPerformed(ActionEvent e) {
             if(e.getActionCommand().equals("Search plots by owner name")){
                 new SearchByName();
-                dispose();
             }else if(e.getActionCommand().equals("Logout")){
                 dispose();
                 new LoginPage();

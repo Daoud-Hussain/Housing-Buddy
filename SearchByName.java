@@ -24,22 +24,30 @@ public class SearchByName {
             String name = JOptionPane.showInputDialog("Enter the name you want to search? ");
             if(buttonResponse == 0){
                 boolean flag = false;
-                ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Residential.txt"));
                 try {
-                    while(true){
-                        ResidentialPlot s = (ResidentialPlot) obj.readObject();
-                        if(s.getOwner().equalsIgnoreCase(name)){
-                            flag = true;
+                    ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Residential.txt"));
+                    try{
+
+                        while(true){
+                            ResidentialPlot s = (ResidentialPlot) obj.readObject();
+                            if(s.getOwner().equalsIgnoreCase(name)){
+                                flag = true;
+                                new Details(s.toString());
+                            }
+                            
                         }
-                        
+                    }catch(EOFException e){
+                        obj.close();
+                        System.out.println("The targetted file has ended Residential\n");
                     }
-                }catch (ClassNotFoundException e) {
+                }catch(FileNotFoundException e){
+                    System.out.println("no file of Residential");
+                    JOptionPane.showMessageDialog(null, "No such record found!", "Update", JOptionPane.INFORMATION_MESSAGE );
+                }
+                catch (ClassNotFoundException e) {
                     System.out.println("The targetted class is not Found\n");
-                }catch(EOFException e){
-                    obj.close();
-                    System.out.println("The targetted file has ended\n");
                 }catch(IOException e){
-                    System.out.println("Couldn't perform operation due to some error");
+                    System.out.println("Couldn't perform operation due to some error Residential");
                 }
 
 
@@ -52,20 +60,25 @@ public class SearchByName {
             }
             else if(buttonResponse == 1){
                 boolean flag = false;
-                ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Commercial.txt"));
                 try {
-                    while(true){
-                        CommercialPlot s = (CommercialPlot) obj.readObject();
-                        if(s.getOwner().equalsIgnoreCase(name)){
-                            flag = true;
+                    ObjectInputStream obj = new ObjectInputStream(new FileInputStream("Commercial.txt"));
+                    try{    
+                        while(true){
+                            CommercialPlot s = (CommercialPlot) obj.readObject();
+                            if(s.getOwner().equalsIgnoreCase(name)){
+                                flag = true;
+                                new Details(s.toString());
+                            }    
                         }
-                        
+                    }catch(EOFException e){
+                        obj.close();
+                        System.out.println("The targetted file has ended Residential\n");
                     }
-                }catch (ClassNotFoundException e) {
+                }catch(FileNotFoundException e){
+                    JOptionPane.showMessageDialog(null, "No such record found!", "Update", JOptionPane.INFORMATION_MESSAGE );
+                }
+                catch (ClassNotFoundException e) {
                     System.out.println("The targetted class is not Found\n");
-                }catch(EOFException e){
-                    obj.close();
-                    System.out.println("The targetted file has ended\n");
                 }catch(IOException e){
                     System.out.println("Couldn't perform operation due to some error");
                 }
@@ -79,8 +92,8 @@ public class SearchByName {
                 }
             }
         }
-        catch(IOException e){
-            System.out.println("Any error");
+        catch(Exception e){
+            System.out.println("Any error "+e.getMessage());
         }
         
     }

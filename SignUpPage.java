@@ -8,15 +8,16 @@ public class SignUpPage extends JFrame{
     JButton b1, b2;
     public SignUpPage(){
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(600,600);
+        setSize(500,400);
         setTitle("Housing Society Management System");
         ImageIcon image = new ImageIcon("Images/logo.jpg");
         setIconImage(image.getImage());
         setLayout(new GridLayout(9,2));
         l1 = new JLabel("Name");
+        l1.setBounds();
         l2 = new JLabel("Plot no");
         l3 = new JLabel("Street no");
-        l4 = new JLabel("City");
+        l4 = new JLabel("Sector");
         l5 = new JLabel("Phone no ");
         l6 = new JLabel("Email");
         l7 = new JLabel("Password");
@@ -65,11 +66,11 @@ public class SignUpPage extends JFrame{
                 String name = t1.getText();
                 String plotNo = t2.getText();
                 String streetno = t3.getText();
-                String city = t4.getText();
+                String sector = t4.getText();
                 String phoneNo = t5.getText();
                 String email = t6.getText();
                 String password = t7.getText();
-                Address userAddress = new Address(plotNo, streetno, city);
+                Address userAddress = new Address(plotNo, streetno, sector);
                 Admin s = new Admin(name, userAddress, phoneNo, email, password);
                 f.writeToFile(s);
                 IDAndPassword passId = new IDAndPassword(email, password, "admin");

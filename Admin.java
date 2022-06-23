@@ -110,22 +110,23 @@ public class Admin extends Person {
             }catch (Exception e) {
                 System.out.println("Some error occured 1");
             }
-
-            try {
-                File f = new File("Members.txt");
-                f.delete();
-                int loopcount = list.size();
-                for(int i = 0; i<loopcount; i++){
-                    addMemberRecord(list.remove(0));
-                }
-            }catch(SecurityException e){
-                System.out.println("Security");
-            }catch (Exception e) {
-                System.out.println("Some error occured while removing by name : "+e.getMessage());
-            }
         }catch (IOException e){
             System.out.println("Some file error occured");
         }
+        
+        try {
+            File f = new File("Members.txt");
+            f.delete();
+            int loopcount = list.size();
+            for(int i = 0; i<loopcount; i++){
+                addMemberRecord(list.remove(0));
+            }
+        }catch(SecurityException e){
+            System.out.println("Security");
+        }catch (Exception e) {
+            System.out.println("Some error occured while removing by name : "+e.getMessage());
+        }
+    
         return flag? "Removed successfully!" : "Cannot found";
     }
 
@@ -217,17 +218,5 @@ public class Admin extends Person {
         }
         return flag ? "Udpated seccessfully" : "Cannot update";
     }
-
-
-
-
-    
-    public void addAPlot(){}
-
-    public void assignHouse(){}
-
-    public void checkRecords(){}
-
-    public void updatePlotInfo(){}
 
 }

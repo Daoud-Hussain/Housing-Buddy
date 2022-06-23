@@ -23,14 +23,25 @@ public class UpdatePlotInformation{
 
 
 			FileOperation f= new FileOperation();
+
+		if(buttonResponse == 0){
 			if(f.UpdateResidentialPlot(oldName, newName, price)){
-				JOptionPane.showMessageDialog(null, "Updated plot information Successfully!!", "Update", JOptionPane.INFORMATION_MESSAGE );
+				JOptionPane.showMessageDialog(null, "Updated residential plot information Successfully!!", "Update", JOptionPane.INFORMATION_MESSAGE );
 			}
 			else{
 				
-				JOptionPane.showMessageDialog(null, "No such user exists", "Update", JOptionPane.INFORMATION_MESSAGE );
+				JOptionPane.showMessageDialog(null, "No such user exists in residential files", "Update", JOptionPane.INFORMATION_MESSAGE );
 			}
-
 		}
+		else{
+			if(f.UpdateCommercialPlot(oldName, newName, price)){
+				JOptionPane.showMessageDialog(null, "Updated Commercial plot information Successfully!!", "Update", JOptionPane.INFORMATION_MESSAGE );
+			}
+			else{
+				
+				JOptionPane.showMessageDialog(null, "No such user exists in Commercial files", "Update", JOptionPane.INFORMATION_MESSAGE );
+			}
+		}
+	}
 	
 }

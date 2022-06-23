@@ -21,7 +21,7 @@ public class DeleteRecordByOwner{
         }
         else if(buttonResponse == 1){
           	FileOperation f= new FileOperation();
-			// f.deleteACommercialPlot(ownerName);
+			f.deleteACommercialPlot(ownerName);
 		}
 		else{
 			System.out.println("No such record exists!!");

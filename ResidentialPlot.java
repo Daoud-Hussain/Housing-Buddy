@@ -33,7 +33,7 @@ public class ResidentialPlot extends Plot implements Taxable{
 
 
     public String toString(){
-        String text = super.toString() + "\nPrice: " + price + "\nTax Amount: " + getTaxAmount() ;
+        String text = super.toString() + "\nPrice: " + price + "\nTax Amount: " + getTaxAmount() + "\n\n" ;
         return text;
     }
 }

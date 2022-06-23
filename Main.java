@@ -1,16 +1,21 @@
+import java.awt.Color;
 import java.awt.GridLayout;
 import javax.swing.JFrame;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-public class Main{
+import javax.swing.*;
+import java.awt.event.*;
+public class Main implements ActionListener{
 	
+	JButton button7;
+	JFrame frame = new JFrame();
 	Main() {
 
-			JFrame frame = new JFrame();
 			frame.setSize(500,400);
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			frame.setLayout(new GridLayout(6,1));
-			frame.setTitle("Housing Society Management System");
+			frame.setLayout(new GridLayout(7,1));
+			frame.getContentPane().setBackground(new Color(0,0,0));
+			frame.setTitle("Admin Dashboard - Plot");
 			ImageIcon image = new ImageIcon("Images/logo.jpg");
 			frame.setIconImage(image.getImage());
 
@@ -29,20 +34,35 @@ public class Main{
 			JButton button6 = new JButton("Delete a member from record");
 			button6.addActionListener(e -> new DeleteRecordByOwner());
 			button6.setFocusable(false);
-			JButton button7 = new JButton("Exit");
-			button7.addActionListener(e -> System.exit(0));
+			button7 = new JButton("Switch to member dashboard");
+			button7.addActionListener(this);
 			button7.setFocusable(false);
+			
+			JButton button8 = new JButton("Exit");
+			button8.addActionListener(e -> System.exit(0));
+			button8.setFocusable(false);
 			frame.add(button1);
 			frame.add(button3);
 			frame.add(button4);
 			frame.add(button5);
 			frame.add(button6);
 			frame.add(button7);
+			frame.add(button8);
 
 
 			frame.setVisible(true);
 
+
+
+
 	}
+        @Override
+        public void actionPerformed(ActionEvent ex) {
+			if(ex.getSource() == button7){
+                frame.dispose();
+                new AdminDashbord();
+            }
+        }
 
 
 	

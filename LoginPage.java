@@ -21,6 +21,8 @@ public class LoginPage implements ActionListener {
         frame.setTitle("Housing Society Management System");
         ImageIcon image = new ImageIcon("Images/logo.jpg");
         frame.setIconImage(image.getImage());
+        // frame.getContentPane().setBackground(new Color(50,20,60));
+
 
         headerLabel.setBounds(150,20,400,50);
         headerLabel.setFont(new Font(null, Font.BOLD, 40));
@@ -97,11 +99,32 @@ public class LoginPage implements ActionListener {
                 if (f.readPasswordsAndValidate(UserID,password)){
                     messageLabel.setForeground(Color.green);
                     messageLabel.setText("Login successful");
-                    frame.dispose();
+                    
+
+
                     if(f.isAdmin(UserID, password)){
-                        new AdminDashbord();
-                    }else{
-                        new Main();
+                        String[] responses = {"Plot", "Member"};
+                        int buttonResponse = JOptionPane.showOptionDialog(null,"Which dashboard you want to check?","Confirm the type?",
+                        JOptionPane.YES_NO_CANCEL_OPTION,
+                        JOptionPane.INFORMATION_MESSAGE,
+                        null,
+                        responses,
+                        0);
+
+                        if(buttonResponse == 0){
+                            new Main();
+                            frame.dispose();
+                        }
+                        else{
+                            new AdminDashbord();        
+                            frame.dispose();
+                        }
+
+                    }
+                    else{
+                        System.out.println("is");
+                        new MemberScreen();
+                        frame.dispose();
                     }
                 }else {
                     messageLabel.setForeground(Color.red);
