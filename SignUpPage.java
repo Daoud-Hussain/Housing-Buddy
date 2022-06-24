@@ -12,9 +12,8 @@ public class SignUpPage extends JFrame{
         setTitle("Housing Society Management System");
         ImageIcon image = new ImageIcon("Images/logo.jpg");
         setIconImage(image.getImage());
-        setLayout(new GridLayout(9,2));
+        setLayout(new GridLayout(8,2));
         l1 = new JLabel("Name");
-        l1.setBounds();
         l2 = new JLabel("Plot no");
         l3 = new JLabel("Street no");
         l4 = new JLabel("Sector");

@@ -48,6 +48,6 @@ public class Person implements Serializable{
 	}
 
     public String toString(){
-        return "\nFull name : "+name+"\nAddress : "+address.toString()+"\nPhone no : "+phoneNo+"\nEmail : "+email;
+        return "\nFull name : "+name+"\nAddress : "+address.toString()+"\nPhone no : "+phoneNo+"\nEmail : "+email + "\n\n";
     }
 }

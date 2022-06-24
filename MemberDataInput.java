@@ -14,7 +14,7 @@ public class MemberDataInput extends JFrame{
         l1 = new JLabel("Name");
         l2 = new JLabel("Plot no");
         l3 = new JLabel("Street no");
-        l4 = new JLabel("City");
+        l4 = new JLabel("Sector");
         l5 = new JLabel("Phone no ");
         l6 = new JLabel("Email");
         l7 = new JLabel("Password");
