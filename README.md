@@ -99,8 +99,8 @@ The customer can perform the following tasks with his profile.
 **Paradigm**: Object-Oriented Programming. <br>
 **IDE’s**: Eclipse, IntelliJ. <br>
 
-### Author
-- <a href="http://daoud-hussain.com/"> Daoud Hussain </a>
+### Developers
+- <a href="https://daoudhussain.tech/"> Daoud Hussain </a>
 - <a href="https://github.com/Muneeb-juttt"> Muneeb Ishaq </a>
 
  **💬 All the project is fully Open-Sourced. Show some love by giving it a STAR🌟.**
